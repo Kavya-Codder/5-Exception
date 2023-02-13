@@ -1,0 +1,6 @@
+framework module Pods_5_Exception_5_ExceptionUITests {
+  umbrella header "Pods-5 Exception-5 ExceptionUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

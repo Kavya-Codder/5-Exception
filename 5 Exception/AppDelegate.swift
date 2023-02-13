@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  5 Exception
 //
-//  Created by Sunil Developer on 11/02/23.
+//  Created by Kavya Prajapati on 11/02/23.
 //
 
 import UIKit
@@ -14,8 +14,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let userDefault = UserDefaults.standard
+        let value = userDefault.bool(forKey: UserKeys.isLoggedIn.rawValue)
+        if value {
+            pushToDeshboardVC()
+        }
+
         return true
+    }
+
+    func pushToDeshboardVC() {
+        let vc = UIStoryboard(name: "Dashboard", bundle: nil).instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
+        let navController = UINavigationController(rootViewController: vc)
+        navController.isNavigationBarHidden = true
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController = navController
+        
     }
 
     // MARK: UISceneSession Lifecycle
